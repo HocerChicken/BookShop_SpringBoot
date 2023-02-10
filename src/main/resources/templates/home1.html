@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        function addRow(id, name, price, image) {
+            $("tbody").append(
+                "<tr>" +
+                "<td>" + id + "</td>" +
+                "<td>" + name + "</td>" +
+                "<td>" + price + "</td>" +
+                "<td>" + image + "</td>" +
+                "<td><a id='editStudent' class=\"btn btn-sm btn-primary\" href=\"#\">Edit</a>  <a id='deleteStudent' class=\"btn btn-sm btn-danger\" href=\"#\" onclick=\"confirmRemoval()\">Delete</a></td>" +
+                "</tr>");
+        }
+        $(document).ready(function () {
+            $.get("http://localhost:8080/clothes/api/list")
+                .done(function (data) {
+                    console.log(data)
+                    $(".home").append(data[0].id)
+
+                    //let n_students = Object.keys(data["data"]).length;
+                    for (let i = 0; i < data.length; i++) {
+                        //let student = data[][i];
+                        addRow(data[i].id, data[i].name,
+                            data[i].price, data[i].image);
+                    }
+                })
+                .fail(function () {
+                    console.log("Fail")
+                })
+        })
+    </script>
+</head>
+
+<body>
+    <table class="table table-hover mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+</body>
+
+</html>

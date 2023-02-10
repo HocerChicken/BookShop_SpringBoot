@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Shopping Book</title>
+    <base href="/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link th:href="@{../css/style.css}" rel="stylesheet">
+    <style>
+        img {
+            margin-top: 20px;
+        }
+
+        .image {
+            width: 200px;
+            margin: auto;
+        }
+
+        .card {}
+    </style>
+</head>
+
+<body>
+    <div th:replace="users/fragments/header-login :: header"> </div>
+
+    <div class="container-fluid bg-light">
+
+
+        <!-- print list product -->
+        <div class="row justify-content-center">
+            <!-- Shop Sidebar Start -->
+            <div class="col-lg-2 col-md-4">
+                <!-- Price Start -->
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter
+                        by price</span></h5>
+                <div class="bg-light p-4 mb-30">
+                    <form>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" checked id="price-all">
+                            <label class="custom-control-label" for="price-all">All Price</label>
+                            <span class="badge border font-weight-normal">1000</span>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="price-1">
+                            <label class="custom-control-label" for="price-1">$0 - $100</label>
+                            <span class="badge border font-weight-normal">150</span>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="price-2">
+                            <label class="custom-control-label" for="price-2">$100 - $200</label>
+                            <span class="badge border font-weight-normal">295</span>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="price-3">
+                            <label class="custom-control-label" for="price-3">$200 - $300</label>
+                            <span class="badge border font-weight-normal">246</span>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="price-4">
+                            <label class="custom-control-label" for="price-4">$300 - $400</label>
+                            <span class="badge border font-weight-normal">145</span>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+                            <input type="checkbox" class="custom-control-input" id="price-5">
+                            <label class="custom-control-label" for="price-5">$400 - $500</label>
+                            <span class="badge border font-weight-normal">168</span>
+                        </div>
+                    </form>
+                </div>
+                <!-- Price End -->
+
+                <!-- Color Start -->
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter
+                        by color</span></h5>
+                <div class="bg-light p-4 mb-30">
+                    <form>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" checked id="color-all">
+                            <label class="custom-control-label" for="price-all">All Color</label>
+                            <span class="badge border font-weight-normal">1000</span>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="color-1">
+                            <label class="custom-control-label" for="color-1">Black</label>
+                            <span class="badge border font-weight-normal">150</span>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="color-2">
+                            <label class="custom-control-label" for="color-2">White</label>
+                            <span class="badge border font-weight-normal">295</span>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="color-3">
+                            <label class="custom-control-label" for="color-3">Red</label>
+                            <span class="badge border font-weight-normal">246</span>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="color-4">
+                            <label class="custom-control-label" for="color-4">Blue</label>
+                            <span class="badge border font-weight-normal">145</span>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+                            <input type="checkbox" class="custom-control-input" id="color-5">
+                            <label class="custom-control-label" for="color-5">Green</label>
+                            <span class="badge border font-weight-normal">168</span>
+                        </div>
+                    </form>
+                </div>
+                <!-- Color End -->
+
+                <!-- Size Start -->
+                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter
+                        by size</span></h5>
+                <div class="bg-light p-4 mb-30">
+                    <form>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" checked id="size-all">
+                            <label class="custom-control-label" for="size-all">All Size</label>
+                            <span class="badge border font-weight-normal">1000</span>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="size-1">
+                            <label class="custom-control-label" for="size-1">XS</label>
+                            <span class="badge border font-weight-normal">150</span>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="size-2">
+                            <label class="custom-control-label" for="size-2">S</label>
+                            <span class="badge border font-weight-normal">295</span>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="size-3">
+                            <label class="custom-control-label" for="size-3">M</label>
+                            <span class="badge border font-weight-normal">246</span>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" class="custom-control-input" id="size-4">
+                            <label class="custom-control-label" for="size-4">L</label>
+                            <span class="badge border font-weight-normal">145</span>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+                            <input type="checkbox" class="custom-control-input" id="size-5">
+                            <label class="custom-control-label" for="size-5">XL</label>
+                            <span class="badge border font-weight-normal">168</span>
+                        </div>
+                    </form>
+                </div>
+                <!-- Size End -->
+            </div>
+            <!-- Shop Sidebar End -->
+            <div class="col-9">
+                <div class="row justify-content-start">
+                    <div th:each="clothes: ${clothes}" class="col-lg-3 mt-4 col-md-6">
+                        <div class="card">
+                            <div class="rounded">
+                                <div class="image rounded mt-2">
+                                    <img class="image" th:src="@{${'/images/' + clothes.image}}" alt="image" />
+                                </div>
+                            </div>
+                            <div class="card-body mt-2">
+                                <!--  
+		                  <h6 style="text-align: justify;" class="card-title text-primary" th:text="${clothes.name}"></h6>
+		              -->
+                                <div>
+                                    <h4 class="price" th:text="${clothes.price}" style="display:inline-block"></h4>
+                                    <h4 style="display:inline-block">đ</h4>
+                                </div>
+                                <a class="btn btn-success" th:href="@{'/addcart/' + ${clothes.id}}">Add To Cart</a>
+                            </div>
+
+                            <div class="card-footer text-muted">
+                                &#9733; &#9733; &#9733; &#9733; &#9734;
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="row mt-4">
+                    <div th:if="${totalPages > 1}">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                Total Rows: [[${totalItems}]]
+                            </div>
+                            <div class="col-sm-1">
+                                <a th:if="${currentPage > 1}" th:href="@{'/users/shopping/1'}">First</a>
+                                <span th:unless="${currentPage > 1}">First</span>
+                            </div>
+                            <div class="col-sm-2">
+                                <a th:if="${currentPage > 1}" th:href="@{'/users/shopping/' + ${currentPage - 1}}"><i
+                                        class="bi bi-arrow-left"></i></a>
+                                <span th:unless="${currentPage > 1}"><i class="bi bi-arrow-left"></i></span>
+                            </div>
+                            <div class="col-sm-5">
+                                <span class="col-sm-1" th:each="i: ${#numbers.sequence(1, totalPages)}">
+                                    <a th:if="${currentPage != i}" th:href="@{'/users/shopping/' + ${i}}">[[${i}]]</a>
+                                    <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                                </span>
+                            </div>
+                            <div class="col-sm-1">
+                                <a th:if="${currentPage < totalPages}"
+                                    th:href="@{'/users/shopping/' + ${currentPage + 1}}"><i
+                                        class="bi bi-arrow-right"></i></a>
+                                <span th:unless="${currentPage < totalPages}"><i class="bi bi-arrow-right"></i></span>
+                            </div>
+
+                            <div class="col-sm-1">
+                                <a th:if="${currentPage < totalPages}"
+                                    th:href="@{'/users/shopping/' + ${totalPages}}">Last</a>
+                                <span th:unless="${currentPage < totalPages}">Last</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- Footer Web -->
+            <jsp:include page="/WEB-INF/views/users/footer.jsp"></jsp:include>
+            <script type="text/javascript" th:src="@{../js/app.js}"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sign up</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <h3 class="text-center text-secondary mt-5 mb-3">Sign up</h3>
+                <form th:action="@{/create-account}" method="post" th:object="${user}"
+                    class="border rounded w-100 mb-5 mx-auto px-3 pt-3 bg-light">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input id="username" th:field="*{username}" type="text" class="form-control"
+                            placeholder="Enter your Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" th:field="*{password}" type="password" class="form-control"
+                            placeholder="Enter your Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input id="confirm-password" type="password" class="form-control"
+                            placeholder="Confirm Password">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success px-5">Sign up</button>
+                    </div>
+                    <div class="form-group">
+                        <p>You have account? <a href="/">Click here</a></p>
+                    </div>
+                </form>
+                <div class="mess-error" style="color: red;"></div>
+                <div th:text="${session.messUserExist}" class="error" style="color: red;"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var username = $("#username");
+        var password = $("#password");
+        var confirm_password = $("#confirm-password")
+        var messError = $(".mess-error");
+
+        $(document).on('click', '.btn', function () {
+            if (username.val() == "") {
+                messError.text("Please enter your username!!!");
+                return false;
+            }
+            if (password.val() == "") {
+                messError.text("Please enter your password!!!");
+                return false;
+            }
+            if (password.val().length < 6) {
+                messError.text("Your password must contain at least 6 characters");
+                return false;
+            }
+            if (confirm_password.val() == "") {
+                messError.text("Please enter your confirm password!!!");
+                return false;
+            }
+            if (password.val() != confirm_password.val()) {
+                messError.text("Confirm password not correct!!!");
+                return false;
+            }
+        })
+    </script>
+</body>
+
+</html>
